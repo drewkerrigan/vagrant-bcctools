@@ -21,7 +21,7 @@ Once vagrant session is up, you can verify your install using the "hello world" 
 
 ```sh
 vagrant ssh
-sudo /usr/share/doc/bpfcc-tools/examples/hello_world.py
+sudo python3 /usr/share/doc/bpfcc-tools/examples/hello_world.py
 ```
 
 In another terminal session
@@ -33,18 +33,10 @@ vagrant ssh
 In the first terminal session you'll see something similar as the ssh session begins and [`clone`](https://linux.die.net/man/2/clone) syscall is triggered.
 
 ```sh
-            bash-5259  [000] ....  1069.839261: 0x00000001: Hello, World!
- systemd-journal-404   [000] ....  1204.523418: 0x00000001: Hello, World!
- systemd-journal-404   [000] ....  1204.524228: 0x00000001: Hello, World!
-            cron-600   [000] ....  1341.196720: 0x00000001: Hello, World!
-   systemd-udevd-424   [000] ....  1341.197997: 0x00000001: Hello, World!
-   systemd-udevd-424   [000] ....  1341.200345: 0x00000001: Hello, World!
-   systemd-udevd-424   [000] ....  1341.201614: 0x00000001: Hello, World!
-            cron-5301  [000] ....  1341.204409: 0x00000001: Hello, World!
-   systemd-udevd-424   [000] ....  1341.205735: 0x00000001: Hello, World!
-              sh-5304  [000] ....  1341.206716: 0x00000001: Hello, World!
-   systemd-udevd-424   [000] ....  1341.207485: 0x00000001: Hello, World!
- systemd-journal-404   [000] ....  1641.273555: 0x00000001: Hello, World!
+b'            sshd-4402  [000] ....  1828.790597: 0: Hello, World!'
+b'   systemd-udevd-432   [001] ....  1828.836454: 0: Hello, World!'
+...
+b'            bash-4482  [000] ....  1829.552158: 0: Hello, World!'
 ```
 
 to tear down
@@ -52,6 +44,34 @@ to tear down
 ```sh
 make clean
 ```
+
+## examples
+
+Finding examples:
+
+```
+ls /usr/share/doc/bpftrace/examples
+ls /usr/share/doc/bpfcc-tools/examples
+```
+
+Finding additional tools:
+
+```sh
+$ ls /usr/sbin | grep bpf
+argdist-bpfcc
+bashreadline-bpfcc
+biolatency-bpfcc
+biosnoop-bpfcc
+biotop-bpfcc
+bitesize-bpfcc
+...
+zfsslower-bpfcc
+$ 
+$ which bpftrace
+/usr/bin/bpftrace
+```
+
+
 
 ## copyright
 
